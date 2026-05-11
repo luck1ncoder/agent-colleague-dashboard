@@ -1,5 +1,7 @@
 # agent-colleague-dashboard
 
+![banner](docs/screenshots/social-preview.png)
+
 > Make your Claude Code `CLAUDE.md` and subagents **visible, conversational, and auditable** — by turning them into "blogger-profile" web pages with reasoning traces and CLAUDE.md ↔ agent alignment scoring.
 
 A bundle of 4 Claude Code skills that gives you:
@@ -37,6 +39,28 @@ Every Claude Code power user hits the same wall:
 1 agent   → Focus mode (single agent's full persona page)
 2+ agents → Team mode (CLAUDE.md hero + clickable agent grid)
 ```
+
+**Team mode** — CLAUDE.md hero + clickable agent grid · sticky topnav
+
+![team](docs/screenshots/team.png)
+
+**Focus mode** — single agent's full persona page (柯瑞 / code-reviewer)
+
+<details>
+<summary>Click to expand full Focus page screenshot</summary>
+
+![focus](docs/screenshots/focus-cole.png)
+
+</details>
+
+**Charter mode** — CLAUDE.md as its own "character" with personality scores + team affinity
+
+<details>
+<summary>Click to expand full Charter page screenshot</summary>
+
+![charter](docs/screenshots/charter.png)
+
+</details>
 
 Every page renders:
 
