@@ -5,15 +5,31 @@
     "title": "项目宪章",
     "path": "~/.claude/CLAUDE.md",
     "lines": 84,
-    "manifesto_html": "我们写最少的代码解决问题，<br>不写为未来准备的抽象，<br>不修不归我们改的东西。",
+    "manifesto_html": "不假设、不藏疑惑。<br>能用 50 行别写 200。<br>只动必须动的。<br>循环到验证通过为止。",
     "agents_count_pretty": "2 个 agent 受约束",
     "source_pretty": "Karpathy 风",
     "modified_pretty": "2 天前更新",
     "principles": [
-      {"num": "01", "title": "先想再写", "desc": "不假设、不藏疑惑、暴露 tradeoff"},
-      {"num": "02", "title": "极简为先", "desc": "200 行能压成 50 就重写"},
-      {"num": "03", "title": "外科手术式改动", "desc": "只动你必须动的"},
-      {"num": "04", "title": "目标驱动", "desc": "定义成功标准，循环验证到通过"}
+      {
+        "num": "01",
+        "title": "先想再写",
+        "desc": "不假设、不藏疑惑、暴露 tradeoff"
+      },
+      {
+        "num": "02",
+        "title": "极简为先",
+        "desc": "能压成 50 行就别写 200"
+      },
+      {
+        "num": "03",
+        "title": "外科手术式改动",
+        "desc": "只动你必须动的，不顺手改邻居"
+      },
+      {
+        "num": "04",
+        "title": "目标驱动",
+        "desc": "定义成功标准，循环验证到通过"
+      }
     ]
   },
   "stats": {
@@ -23,28 +39,38 @@
   "agents": [
     {
       "name": "code-reviewer",
-      "cn_name": "柯瑞",
+      "cn_name": "阿珍",
       "avatar_emoji": "🧐",
       "tier_class": "opus",
       "tier_label": "⚡ OPUS",
       "mbti": "ISTJ",
       "archetype": "资深代码审查师 · 完美主义晚期",
-      "tags_short": ["#bug 嗅探犬", "#夜班"],
+      "tags_short": [
+        "#bug 嗅探犬",
+        "#夜班"
+      ],
       "tools_count": 6,
-      "stats": {"monthly_calls": 47},
+      "stats": {
+        "monthly_calls": 47
+      },
       "focus_url": "file:///tmp/code-reviewer-focus.html"
     },
     {
       "name": "vibe-coder",
-      "cn_name": "阿V",
+      "cn_name": "阿强",
       "avatar_emoji": "🤙",
       "tier_class": "sonnet",
       "tier_label": "🎵 SONNET",
       "mbti": "ENFP",
       "archetype": "原型快枪手 · 先跑起来再说",
-      "tags_short": ["#ship 才是道理", "#双子"],
+      "tags_short": [
+        "#ship 才是道理",
+        "#双子"
+      ],
       "tools_count": 3,
-      "stats": {"monthly_calls": 89},
+      "stats": {
+        "monthly_calls": 89
+      },
       "focus_url": "file:///tmp/vibe-coder-focus.html"
     }
   ]
