@@ -181,7 +181,7 @@ Search order: `./CLAUDE.md`, `~/.claude/CLAUDE.md`. If neither: tell user "no CL
 ### Step B. Infer charter persona
 
 Output JSON matching `samples/claude-md.json` shape. Same inference principles as agent persona — but treat the document as the entity:
-- `cn_title`: name the charter ("项目宪章" / "守则" — your call based on tone)
+- `cn_title`: name the charter ("约法四章" / "守则" — your call based on tone)
 - `vibe`: one phrase capturing the document's character
 - `mbti`: yes, CLAUDE.md has an MBTI too (e.g., ISTJ-J for rule-heavy charters, ENFP for permissive ones)
 - `principles`: extract the top-level principles from the doc body

@@ -69,7 +69,7 @@ class TestRenderCharter(unittest.TestCase):
             ], capture_output=True, text=True)
             self.assertEqual(result.returncode, 0, msg=result.stderr)
             html = Path(out_path).read_text()
-            self.assertIn('项目宪章', html)
+            self.assertIn('约法四章', html)
             self.assertIn('先想再写', html)
             self.assertIn('阿强 服从度仅 28', html)
             self.assertNotIn('{{', html)

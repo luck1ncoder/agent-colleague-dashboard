@@ -2,7 +2,7 @@
   "project_name": "agent_dashboard",
   "agents_count": 2,
   "claude": {
-    "title": "项目宪章",
+    "title": "约法四章",
     "path": "~/.claude/CLAUDE.md",
     "lines": 84,
     "manifesto_html": "不假设、不藏疑惑。<br>能用 50 行别写 200。<br>只动必须动的。<br>循环到验证通过为止。",

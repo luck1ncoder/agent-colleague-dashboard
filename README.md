@@ -1,8 +1,10 @@
 # agent-colleague-dashboard
 
+**English** | [中文](README.zh.md)
+
 ![banner](docs/screenshots/social-preview.png)
 
-> Make your Claude Code `CLAUDE.md` and subagents **visible, conversational, and auditable** — by turning them into "blogger-profile" web pages with reasoning traces and CLAUDE.md ↔ agent alignment scoring.
+> Make your Claude Code `CLAUDE.md` and `subagents` (`.claude/agents/*.md`) **visible, conversational, and auditable** — by turning them into "blogger-profile" web pages with reasoning traces and `CLAUDE.md` ↔ agent alignment scoring.
 
 A bundle of 4 Claude Code skills that gives you:
 
