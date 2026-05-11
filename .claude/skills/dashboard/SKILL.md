@@ -134,7 +134,8 @@ For CLAUDE.md mode when 0 agents exist: set `nav.no_agents: true` and `nav.agent
 ### Step D. Save to cache, render, open
 
 1. Write JSON to `~/.claude/dashboard-cache/<hash>.json` via Bash.
-2. Run `python3 .claude/skills/dashboard/scripts/render.py --json <cache>.json --template .claude/skills/dashboard/templates/agent-profile.html --out ~/.claude/dashboard-cache/<hash>.html` via Bash.
+2. Run `DASHBOARD=.claude/skills/dashboard
+python3 $DASHBOARD/scripts/render.py --json <cache>.json --template .claude/skills/dashboard/templates/agent-profile.html --out ~/.claude/dashboard-cache/<hash>.html` via Bash.
 3. Run `open ~/.claude/dashboard-cache/<hash>.html` to launch browser.
 4. Tell the user the file path and a one-line summary ("Rendered 柯瑞 · Focus mode → opening browser").
 
@@ -208,7 +209,7 @@ Use `templates/claude-charter.html`. Same pattern.
 
 Run via Bash:
 ```
-python3 .claude/skills/dashboard/scripts/detect_mode.py 2>&1 || true
+python3 $DASHBOARD/scripts/detect_mode.py 2>&1 || true
 ```
 
 Or replicate the logic inline: count agents in `.claude/agents/*.md` ∪ `~/.claude/agents/*.md` (dedupe by name).

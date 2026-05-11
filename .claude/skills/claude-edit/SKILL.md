@@ -54,14 +54,15 @@ Translate the request into a precise edit:
 ### Step D. Backup before edit
 
 ```
-python3 .claude/skills/dashboard/scripts/backup.py <resolved-path>
+DASHBOARD=.claude/skills/dashboard
+python3 $DASHBOARD/scripts/backup.py <resolved-path>
 ```
 
 ### Step E. Invalidate the dashboard cache (before the edit)
 
 Run via Bash:
 ```
-python3 .claude/skills/dashboard/scripts/invalidate_cache.py <resolved-path>
+python3 $DASHBOARD/scripts/invalidate_cache.py <resolved-path>
 ```
 
 This MUST happen before the Edit (while the file still has its pre-edit content). Calling after the edit hashes the new content and finds nothing to remove, leaving stale entries in `~/.claude/dashboard-cache/`.
