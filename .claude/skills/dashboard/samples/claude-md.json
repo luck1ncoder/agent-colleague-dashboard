@@ -1,0 +1,69 @@
+{
+  "type": "claude_md",
+  "source_path": "/Users/antonio/.claude/CLAUDE.md",
+  "cn_title": "项目宪章",
+  "avatar_emoji": "📜",
+  "vibe": "克制的工匠",
+  "lines": 84,
+  "principles_count": 4,
+  "bound_agents_count": 2,
+  "modified_pretty": "2 天前更新",
+  "origin": "Karpathy 风",
+  "path": "~/.claude/CLAUDE.md",
+  "archetype": "克制的工匠",
+  "mbti": "ISTJ-J",
+  "tags": ["#less-is-more", "#克制", "#反过度抽象", "#外科手术式", "#可验证", "#结构化"],
+  "manifesto_html": "我们写最少的代码解决问题，<br>不写为未来准备的抽象，<br>不修不归我们改的东西。",
+  "personality": {
+    "rigor": 92, "speed": 35, "empathy": 60,
+    "creative": 25, "stress": 88, "communication": 70
+  },
+  "quotes": [
+    "Don't assume. Don't hide confusion.",
+    "If you write 200 lines and it could be 50, rewrite it.",
+    "Match existing style, even if you'd do it differently.",
+    "Strong success criteria let you loop independently."
+  ],
+  "principles": [
+    {"icon": "🤔", "title": "先想再写", "body": "不假设、不藏疑惑、暴露 tradeoff。多解读时不要默默挑一个。"},
+    {"icon": "✂️", "title": "极简为先", "body": "200 行能压成 50 就重写。一个资深工程师会不会说\"这写复杂了\"？"},
+    {"icon": "🩹", "title": "外科手术式改动", "body": "只动你必须动的。每一行变更都能直接追溯到用户请求。"},
+    {"icon": "🎯", "title": "目标驱动", "body": "把任务转成可验证的目标，循环到通过为止。"}
+  ],
+  "aversions": [
+    "过度抽象 (单次使用搞 Strategy/Factory)",
+    "未验证的乐观 (\"应该差不多\")",
+    "顺手改邻居代码",
+    "为未来准备的 flexibility"
+  ],
+  "origin_story": "改自 Andrej Karpathy 在 2026 年 1 月的 X 推文 — 他记录了自己 80% 转向 agent coding 后总结的 LLM coding pitfalls，社区把这条推文整理成了一份 ~50 行的 CLAUDE.md 模板，本项目在此基础上做了少量本地化。",
+  "affinity": [
+    {"cn_name": "柯瑞", "avatar_emoji": "🧐", "score": 92, "level": "high"},
+    {"cn_name": "阿V", "avatar_emoji": "🤙", "score": 28, "level": "low"}
+  ],
+  "has_low_affinity": true,
+  "low_affinity_warning": "阿V 服从度仅 28 — 他的 prompt 鼓励 \"ship fast, fix later\"，跟原则 1/2 冲突。建议要么改阿V，要么放弃这条原则。",
+  "reasoning_trace": [
+    {
+      "conclusion": "📌 出身 = Karpathy 风",
+      "sources": [
+        "L1: \"Behavioral guidelines to reduce common LLM coding mistakes\"",
+        "L17: \"If you write 200 lines and it could be 50, rewrite it\""
+      ],
+      "reasoning": "第二条几乎逐字来自 Karpathy 2026.01 的 X 推文。"
+    },
+    {
+      "conclusion": "🎯 项目气质 = ISTJ-J · 克制工匠",
+      "sources": [
+        "L8 \"State your assumptions explicitly\"",
+        "L40 \"Strong success criteria let you loop independently\""
+      ],
+      "reasoning": "结构化 (J) + 具体可验证 (S) + 规则优先 (T) + 内省式 (I)。无任何鼓励发散的语句。"
+    },
+    {
+      "conclusion": "⚠️ 阿V 服从度 28",
+      "sources": ["原则 1: 必须先讲假设、不藏疑惑", "阿V prompt: \"ship fast, vibe-driven\""],
+      "reasoning": "语义直接对冲。dashboard 自动 flag。"
+    }
+  ]
+}

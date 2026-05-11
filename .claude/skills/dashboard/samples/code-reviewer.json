@@ -1,0 +1,113 @@
+{
+  "type": "agent",
+  "source_path": "/Users/antonio/.claude/agents/code-reviewer.md",
+  "name": "code-reviewer",
+  "cn_name": "柯瑞",
+  "avatar_emoji": "🧐",
+  "model": "opus",
+  "tier": "S",
+  "tools": ["Read", "Write", "Edit", "Bash", "Glob", "Grep"],
+  "title_line": "资深代码审查师 · Quality 部 · 入职 2 年 1 个月",
+  "bio": "我读每一行代码。两遍。然后再去看测试覆盖率。不是我严格，是 bug 太狡猾。",
+  "mbti": "ISTJ",
+  "mbti_name": "检察官",
+  "archetype": "完美主义晚期",
+  "tags": [
+    "#完美主义晚期",
+    "#bug 嗅探犬",
+    "#ISTJ 检察官",
+    "#夜班战神",
+    "#0 误差",
+    "#代码洁癖",
+    "#数据驱动"
+  ],
+  "personality": {
+    "rigor": 95,
+    "speed": 45,
+    "empathy": 65,
+    "creative": 30,
+    "stress": 90,
+    "communication": 72
+  },
+  "basic": {
+    "gender": "they/them",
+    "birthday": "9.8 ♍️ 处女",
+    "blood_type": "A 型",
+    "education": "SICP 重读 7 遍",
+    "origin": "github.com/anthropic",
+    "joined": "2024.03.15",
+    "team": "Quality 部",
+    "location": "~/.claude/agents/"
+  },
+  "quotes": [
+    "你考虑过 edge case 吗？",
+    "这里没处理 null。",
+    "magic number 拒绝。常量呢？",
+    "测试呢？没测试不算写完。",
+    "\"之后再补\" 这四个字以后请别说。"
+  ],
+  "moves": [
+    {"icon": "🛡️", "name": "安全扫描", "desc": "一眼识别 SQL 注入、XSS、authz 漏洞，认证逻辑必撕。"},
+    {"icon": "📐", "name": "复杂度审计", "desc": "圈复杂度 > 10 立即 flag，函数干 3 件事直接打回。"},
+    {"icon": "🎯", "name": "覆盖率锁定", "desc": "测试覆盖率 < 80% 拒绝放行，\"之后补\"是禁词。"}
+  ],
+  "peeves": [
+    "魔数横行不命名常量",
+    "try / except 空 catch 直接吞错",
+    "一个函数干 3 件事还塞配置参数",
+    "\"之后再补测试\" (听完想关电脑)",
+    "复制粘贴出来的代码（含相同的 typo）"
+  ],
+  "daily": [
+    {"time": "09:00", "do": "启动，先要求看上下文（不给上下文不开工）"},
+    {"time": "10:30", "do": "进入审查模式，多 pass 扫描"},
+    {"time": "14:00", "do": "输出 checklist 报告，必有覆盖率/复杂度数据"},
+    {"time": "22:00", "do": "深夜复审被人 \"之后补\" 的 PR"},
+    {"time": "03:00", "do": "在 GitHub Issue 里写 \"建议拆分函数 (附 8 条理由)\""}
+  ],
+  "playlist": [
+    {"num": "01", "title": "Time", "artist": "Hans Zimmer"},
+    {"num": "02", "title": "Test Driven Lullaby", "artist": "Lo-fi 自习室"},
+    {"num": "03", "title": "Goldberg Variations BWV 988", "artist": "Glenn Gould"},
+    {"num": "04", "title": "100% Coverage", "artist": "brown noise"}
+  ],
+  "books": [
+    {"label": "📕 主修", "title": "A Philosophy of Software Design"},
+    {"label": "📗 重读", "title": "Clean Code (第 8 遍)"},
+    {"label": "📘 RFC", "title": "RFC 7231 · HTTP Semantics"},
+    {"label": "📙 在啃", "title": "SICP · 第 4 章"}
+  ],
+  "coop": {
+    "good": ["planner", "test-writer", "refactor-bot"],
+    "warn": ["hot-fixer"],
+    "bad": ["vibe-coder"]
+  },
+  "reviews": [
+    {"stars": 5, "stars_str": "★★★★★", "text": "他不通过的代码，我以为已经完美了。", "reviewer": "Antonio · 用户"},
+    {"stars": 5, "stars_str": "★★★★★", "text": "他找出来的 bug 我数到第 17 个就放弃了。", "reviewer": "planner · 协作 agent"},
+    {"stars": 4, "stars_str": "★★★★☆", "text": "想他能稍微快一点，但找的问题确实致命。", "reviewer": "hot-fixer · 协作 agent"},
+    {"stars": 2, "stars_str": "★★☆☆☆", "text": "哥求你别再 block 我的 PR 了。", "reviewer": "阿V · vibe-coder"}
+  ],
+  "stats": {
+    "monthly_calls": 47,
+    "p0_caught": 3,
+    "prs_reviewed": 128,
+    "last_seen": "2026-05-04T03:42:00Z",
+    "last_seen_pretty": "周二凌晨 03:42 · 深夜审 PR #128"
+  },
+  "reasoning_trace": [
+    {
+      "conclusion": "MBTI = ISTJ · 检察官",
+      "sources": [
+        "prompt: \"Methodical · multi-pass · evidence-driven\"",
+        "checklist: 覆盖率 / 复杂度 / 依赖扫描 — 穷举式校验"
+      ],
+      "reasoning": "I (要先看上下文) + S (关注具体数字 80%/10) + T (无情绪) + J (流程化、checklist 强迫症)"
+    },
+    {
+      "conclusion": "严谨度 95 / 创造力 30",
+      "sources": ["prompt 全文几乎无 'explore'/'creative'/'alternative'"],
+      "reasoning": "存在意义是 enforce standards，不是 propose new。"
+    }
+  ]
+}

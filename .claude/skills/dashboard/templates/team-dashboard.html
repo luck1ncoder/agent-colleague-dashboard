@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Team Dashboard · {{project_name}}</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(at 0% 0%, #4a1d6a 0%, transparent 30%),
+      radial-gradient(at 100% 0%, #1d3a6a 0%, transparent 30%),
+      radial-gradient(at 50% 100%, #6a1d4a 0%, transparent 35%),
+      #07080d;
+    background-attachment: fixed;
+    color: #e8eaed;
+    font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif;
+    min-height: 100vh; padding: 28px 16px;
+  }
+  .page { max-width: 1080px; margin: 0 auto; }
+
+  /* TOPNAV (shared across all dashboard pages) */
+  .topnav {
+    display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+    padding: 10px 14px; margin-bottom: 24px;
+    background: rgba(15,15,25,0.85); backdrop-filter: blur(12px);
+    border: 1px solid #22252e; border-radius: 12px;
+    position: sticky; top: 12px; z-index: 100; font-size: 13px;
+  }
+  .topnav-brand {
+    font-weight: 800; text-decoration: none; padding: 4px 10px;
+    background: linear-gradient(135deg, #ff6e9c, #b06efb);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .topnav-sep { opacity: 0.25; margin: 0 4px; }
+  .topnav-label { opacity: 0.45; font-size: 10.5px; letter-spacing: 0.6px; text-transform: uppercase; }
+  .topnav-link, .topnav-agent {
+    color: #e8eaed; text-decoration: none; opacity: 0.7;
+    padding: 4px 10px; border-radius: 6px;
+    transition: all .15s; font-size: 12.5px;
+  }
+  .topnav-link:hover, .topnav-agent:hover {
+    opacity: 1; background: rgba(255,255,255,0.08);
+  }
+  .topnav-link.active {
+    opacity: 1; background: rgba(176,110,251,0.18); color: #d0a8ff;
+  }
+
+  /* CLAUDE.MD HERO */
+  .claude-hero {
+    position: relative;
+    background: linear-gradient(135deg, #1a1330 0%, #2a1a3a 50%, #1d2a3a 100%);
+    border-radius: 24px; padding: 32px 28px;
+    border: 2px solid #3a2d5a; overflow: hidden;
+    margin-bottom: 32px;
+    box-shadow: 0 20px 60px rgba(176,110,251,0.15);
+  }
+  .claude-hero::before {
+    content: '📜'; position: absolute; top: 50%; right: -20px;
+    transform: translateY(-50%); font-size: 240px; opacity: 0.06;
+    pointer-events: none;
+  }
+  .claude-tag {
+    display: inline-block; font-size: 10px; font-weight: 800;
+    letter-spacing: 2px; padding: 4px 10px; border-radius: 4px;
+    background: rgba(255,217,102,0.15); color: #ffd966;
+    border: 1px solid rgba(255,217,102,0.3); margin-bottom: 12px;
+  }
+  .claude-title {
+    font-size: 28px; font-weight: 900; letter-spacing: -0.5px;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #fff, #ffd0e0);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .claude-sub { font-size: 13px; opacity: 0.6; margin-bottom: 22px; font-family: monospace; }
+  .claude-quote {
+    font-size: 17px; line-height: 1.6; font-weight: 500;
+    padding: 16px 20px; background: rgba(0,0,0,0.3); border-radius: 12px;
+    border-left: 3px solid #ffd966; margin-bottom: 20px; font-style: italic;
+  }
+  .principles {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+  }
+  .principle {
+    background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.06);
+    padding: 14px 16px; border-radius: 12px;
+  }
+  .principle-num {
+    display: inline-block; font-size: 11px; font-weight: 800;
+    padding: 2px 7px; border-radius: 4px; margin-right: 6px;
+    background: linear-gradient(135deg, #ff6e9c, #b06efb);
+    color: #fff;
+  }
+  .principle-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .principle-desc { font-size: 12px; opacity: 0.7; line-height: 1.5; }
+
+  /* TEAM SECTION */
+  .section-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 18px;
+  }
+  .section-h {
+    font-size: 20px; font-weight: 800;
+  }
+  .section-meta { font-size: 13px; opacity: 0.6; }
+
+  /* AGENT GRID */
+  .agent-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  }
+  .mini-card-link {
+    text-decoration: none; color: inherit; display: block;
+  }
+  .mini-card {
+    position: relative;
+    background: linear-gradient(160deg, #15171d 0%, #1a1722 100%);
+    border: 1px solid #22252e; border-radius: 16px;
+    padding: 18px; cursor: pointer; transition: all .25s;
+    overflow: hidden;
+  }
+  .mini-card::before {
+    content: ''; position: absolute; top: 0; right: 0;
+    width: 100px; height: 100px; border-radius: 50%;
+    opacity: 0.18; filter: blur(20px); pointer-events: none;
+    transform: translate(30px, -30px);
+  }
+  .mini-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255,255,255,0.2);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+  }
+  .mini-card.tier-opus::before { background: linear-gradient(135deg, #ff6e9c, #ff9648); }
+  .mini-card.tier-sonnet::before { background: linear-gradient(135deg, #b06efb, #5fdcff); }
+  .mini-card.tier-haiku::before { background: linear-gradient(135deg, #6ce28e, #5fdcff); }
+
+  .mc-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; position: relative; z-index: 1; }
+  .mc-avatar {
+    width: 56px; height: 56px; border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 30px; flex-shrink: 0;
+    border: 2px solid rgba(255,255,255,0.08);
+  }
+  .mc-avatar.tier-opus { background: linear-gradient(135deg, #ff6e9c33, #ff964833); }
+  .mc-avatar.tier-sonnet { background: linear-gradient(135deg, #b06efb33, #5fdcff33); }
+  .mc-avatar.tier-haiku { background: linear-gradient(135deg, #6ce28e33, #5fdcff33); }
+
+  .mc-tier {
+    font-size: 9px; font-weight: 800; letter-spacing: 1px;
+    padding: 3px 8px; border-radius: 4px;
+  }
+  .mc-tier.tier-opus { background: linear-gradient(135deg, #ff6e9c, #ff9648); color: #fff; }
+  .mc-tier.tier-sonnet { background: linear-gradient(135deg, #b06efb, #5fdcff); color: #fff; }
+  .mc-tier.tier-haiku { background: linear-gradient(135deg, #6ce28e, #2a8a4a); color: #fff; }
+
+  .mc-name { font-size: 17px; font-weight: 800; margin-bottom: 2px; }
+  .mc-en { font-size: 11.5px; opacity: 0.45; font-family: monospace; margin-bottom: 8px; }
+  .mc-role { font-size: 12.5px; opacity: 0.7; line-height: 1.4; margin-bottom: 12px; }
+
+  .mc-tags { display: flex; gap: 5px; flex-wrap: wrap; }
+  .mc-tag {
+    font-size: 10.5px; font-weight: 600;
+    padding: 3px 8px; border-radius: 5px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.03);
+  }
+  .mc-tag.mbti { background: rgba(95,220,255,0.12); border-color: rgba(95,220,255,0.3); color: #8ce8ff; }
+  .mc-tag.hot { background: rgba(255,110,156,0.12); border-color: rgba(255,110,156,0.3); color: #ff9ec0; }
+
+  .mc-stats {
+    display: flex; gap: 12px; margin-top: 12px;
+    padding-top: 12px; border-top: 1px dashed #22252e;
+    font-size: 11px; opacity: 0.6;
+  }
+  .mc-stat b { color: #ffd966; font-weight: 700; }
+
+  /* footer note */
+  .demo-note {
+    margin-top: 32px; padding: 14px 18px; border-radius: 12px;
+    background: rgba(95,220,255,0.05); border: 1px dashed rgba(95,220,255,0.3);
+    font-size: 12.5px; line-height: 1.6; opacity: 0.85;
+  }
+  .demo-note b { color: #5fdcff; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- TOPNAV -->
+  <nav class="topnav">
+    <a class="topnav-brand" href="#">⚡ {{nav.project_name}}</a>
+    <span class="topnav-sep">·</span>
+    <a class="topnav-link" href="{{nav.charter_url}}">📜 Charter</a>
+    <a class="topnav-link active" href="#">👥 Team</a>
+    {{#if nav.agents}}
+    <span class="topnav-sep">·</span>
+    <span class="topnav-label">Agents</span>
+    {{#each nav.agents}}
+    <a class="topnav-agent" href="{{this.url}}" title="@{{this.name}}">{{this.avatar_emoji}} {{this.cn_name}}</a>
+    {{/each}}
+    {{/if}}
+  </nav>
+
+  <!-- CLAUDE.MD HERO -->
+  <div class="claude-hero">
+    <span class="claude-tag">CLAUDE · MD</span>
+    <h1 class="claude-title">{{claude.title}}</h1>
+    <div class="claude-sub">{{claude.path}}</div>
+
+    <div class="claude-quote">
+      {{claude.manifesto_html}}
+    </div>
+
+    <div class="principles">
+  {{#each claude.principles}}
+  <div class="principle">
+    <div><span class="principle-num">{{this.num}}</span><span class="principle-title">{{this.title}}</span></div>
+    <div class="principle-desc">{{this.desc}}</div>
+  </div>
+  {{/each}}
+</div>
+  </div>
+
+  <!-- TEAM -->
+  <div class="section-head">
+    <h2 class="section-h">团队成员 · <span style="opacity:0.5">{{agents_count}} 位 agent</span></h2>
+    <div class="section-meta">
+      <span style="margin-right:14px;">{{stats.online_pretty}}</span>
+      <span>{{stats.tier_distribution}}</span>
+    </div>
+  </div>
+
+  <div class="agent-grid">
+  {{#each agents}}
+  <a class="mini-card-link" href="{{this.focus_url}}">
+  <div class="mini-card tier-{{this.tier_class}}">
+    <div class="mc-top">
+      <div class="mc-avatar tier-{{this.tier_class}}">{{this.avatar_emoji}}</div>
+      <span class="mc-tier tier-{{this.tier_class}}">{{this.tier_label}}</span>
+    </div>
+    <div class="mc-name">{{this.cn_name}}</div>
+    <div class="mc-en">@{{this.name}}</div>
+    <div class="mc-role">{{this.archetype}}</div>
+    <div class="mc-tags">
+      <span class="mc-tag mbti">{{this.mbti}}</span>
+      {{#each this.tags_short}}
+      <span class="mc-tag">{{this}}</span>
+      {{/each}}
+    </div>
+    <div class="mc-stats">
+      <span class="mc-stat">本月 <b>{{this.stats.monthly_calls}}</b> 次出场</span>
+      <span class="mc-stat">⚔️ <b>{{this.tools_count}}</b> 工具</span>
+    </div>
+  </div>
+  </a>
+  {{/each}}
+</div>
+
+  <!-- DEMO NOTE -->
+  <div class="demo-note">
+    <b>这是方案 ② 的入口页 demo。</b>
+    点任何一张迷你卡 → 进 v3 那个完整人物主页（详情页）。<br>
+    顶部 CLAUDE.md 区域是项目"宪章"，所有 agent 都受这 4 条原则约束。<br>
+    右上角 "+ 提需求" 是 Goal 3 的入口（用户用自然语言描述变更，dashboard 给一段命令复制粘贴到 Claude Code）。
+  </div>
+
+</div>
+
+</body>
+</html>
